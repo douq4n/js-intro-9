@@ -299,10 +299,19 @@ isPrime(1)		-> false
 
 
 const isPrime = (num) => {
-    
+    if(num < 2) return false
+    if (num === 2 || num === 3) return true
+    if (num % 2 === 0 || num % 3 === 0) return false
+
+    let d = 5;
+    while( d < num){
+        if (num % d === 0) return false 
+        d++
+    }
+    return true
 }
 
-console.log(isPrime(7));
+console.log(isPrime(87));
 
 /*
 Requirement:
