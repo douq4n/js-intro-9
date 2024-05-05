@@ -216,6 +216,25 @@ countOccurrence("Hello", "l")​ 		-> 2
 countOccurrence("IT conversations", "IT")​ 	-> 2
 */
 
+function countOccurrence(str1, str2) {
+  let count = 0;
+  for (let i = 0; i <= str1.length - str2.length; i++) {
+      if (str1.substring(i, i + str2.length) === str2) {
+          count++;
+      }
+  }
+  return count;
+}
+
+
+console.log(countOccurrence("Javascript", "Java"));  
+console.log(countOccurrence("Hello", "World"));      
+console.log(countOccurrence("Can I can a can", "anc"));  
+console.log(countOccurrence("Hello", "l"));         
+console.log(countOccurrence("IT conversations", "IT")); 
+
+
+
 
 
 
