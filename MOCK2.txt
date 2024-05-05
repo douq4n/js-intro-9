@@ -1,0 +1,50 @@
+CAN YOU DESCRIBE THE DIFFERENT ROLES AND RESPONSIBILITIES IN SDLC
+
+CUSTOMER
+
+1-Define business objective and requirements
+2-Provide feedback and review deliverables
+3-Approve changes and milestones
+
+
+PO (PRODUCT OWNER)
+
+1-Define and pritorize product backlog items
+2-Act as like bridge between development team and customers
+3-Ensure the team works on the highest-priority task
+
+SCRUM MASTER
+
+Faciliate Scrum ceremonies 
+Remove impediments and ensure team productivity
+Shiel the team from external distractions 
+
+SOFTWARE ARCHITECT
+
+Define system architecture and design
+Create technical specification and design document
+Coordinate with development team
+
+SOFTWARE DEVELOPER
+
+Write code based on technical specifications
+Debug and troubleshoot software issues
+Collaborate with testing team
+
+SOFTWARE TESTER
+
+Develop test plan and test cases
+Report and track defects
+Ensure software meets quality standarts
+
+UX/UI DESIGNER
+
+Design user interfaces and user experiences
+Create wireframe, mockups, and prototypes
+Ensure its user friendly 
+
+END user
+
+Use software for all their needs
+Work with UI/UX designer for testing purposes
+Report any bugs during maintinance phase

@@ -10,10 +10,9 @@ hasLowerCase("125$")  -> false
 hasLowerCase("   a   ")  -> true
 */
 
-const hasLowerCase = (str) => {
-    if ( str.split('').filter(n => n >= 'a' && n <= 'z').length > 0) return true
-    else false
- }
+const hasLowerCase = (str) => str.split('').filter(n => n >= 'a' && n <= 'z').length > 0 
+    
+ 
  
  console.log(hasLowerCase("hello"))
  
@@ -29,10 +28,9 @@ const hasLowerCase = (str) => {
  noZero([10, 100 0]) -> [10, 100]
  */
  
- const noZero = (arr) => {
- return arr.filter(n => !(n === 0))
+ const noZero = (arr) =>  arr.filter(n => !(n === 0))
  
- }
+ 
  
  console.log(noZero([10, 100, 0]))
  
@@ -50,11 +48,9 @@ const hasLowerCase = (str) => {
  numberAndSquare([0, 1, -10])  -> [[0, 0], [1, 1], [-10, 100]]
  */
  
- const numberAndSquare = (arr) => {
+ const numberAndSquare = (arr) =>  arr.map(x => [x, x*x])
     
-    return arr.map(x => [x, x])
-    
- }
+ 
  
  console.log(numberAndSquare([0, 1, -10]))
  
@@ -71,17 +67,7 @@ const hasLowerCase = (str) => {
  containsValue(["abc", "def", "123"], "Abc")  -> false
  containsValue(["abc", "def", "123", "Javascript", "Hello"], "123")  -> true
  */
- const containsValue = (arr, str) => {
-   
-    for(let i = 0; i < arr.length; i++){
-       if(arr[i] === str){
-          return true;
-       }
-      
-   }
-   return false
-    
- }
+ const containsValue = (arr, str) => arr.includes(str)
  
  console.log(containsValue(["abc", "def", "123", "Javascript", "Hello"], "123"))
  
@@ -102,16 +88,9 @@ const hasLowerCase = (str) => {
  
  const reverseSentence = (str) => {
     
-    if (str.includes(' ')){
-       arr = str.split(' ');
-       newarr = [];
-       for(let i = arr.length - 1; i >= 0; i--){
-          newarr.push(arr[i])
- 
-       }
-       return newarr.join(' ')[0].toUpperCase() + newarr.join(' ').slice(1);}
-       else  
-       return console.log("There is not enough words!")
+    if(!str.trim().includes(' ')) return "There is no enough words"
+    let result = str.split(' ').reverse().join(' ')
+    return result.slice(0,1).toUpperCase() + result.slice(1).toLowerCase()
     } 
   
  
@@ -133,7 +112,7 @@ const hasLowerCase = (str) => {
  
  const removeStringSpecialsDigits = (str) => {
   
-    return str.split('').filter( x => x >= "a" && x <= "z" || x >= "A" && x <= "Z" ).join('')
+    return str.split('').filter( x => x >= "a" && x <= "z" || x >= "A" && x <= "Z" || x === " ").join('')
  }
  
  
@@ -154,14 +133,10 @@ const hasLowerCase = (str) => {
  "tool"]
  */
  
- const removeArraySpecialsDigits = (arr) => {
-       str1 = arr.join(' ')
-        str2 = str1.replace(/[^ \w\s]/gi, "")
-         str3 = str2.replace(/[1234567890]/g, "")
-         return str3.split(' ')
+ const removeArraySpecialsDigits = (arr) => arr.map(str1 => str1.split('').filter(x => x >= 'a' && x <= 'z' || x >= 'A' && x <= 'Z').join() )
  
     //  str1.split('').filter(x => x >= 'a' && x <= 'z' || x >= 'A' && x <= 'Z').join("")
- }
+ 
  
  console.log(removeArraySpecialsDigits(["Automation", "123#$%tool"]))
  console.log(removeArraySpecialsDigits(["Cypress", "123$%", "###"]))
@@ -182,20 +157,17 @@ const hasLowerCase = (str) => {
  
  const getCommons = (arr1, arr2) => {
     
-    for(let i = 0; i <= arr1.length - 1; i++){
-       for(let y = 0; y <= arr2.length -1; y++){
-          if( arr1[i] === arr2[y]) {
-       j = arr1[i]
-           
-         } 
-       
-       }
+    arr1.filter(i => arr2.includes(i))
     
-    }
-   return j.split(' ')
+   let result = []; 
+   arr1.forEach(i => {
+      if(!result.includes(i)) result.push(i);
+      
+   });
+   return result
  }
  
- console.log(getCommons( ["Javascript", "is", "fun"], ["Javascript", "C#", "Python"] ))
+ console.log(getCommons( ["Javascript", "C#", "C#"], ["Python", "C#", "C++"] ))
  
  /*
  Requirement:
@@ -211,11 +183,21 @@ const hasLowerCase = (str) => {
  */
  
  const noXInVariables = (arr) => { 
-   str =  arr.join(" ")
-  str2 = str.replace(/[xX]/g, "")
-   arr = str2.split(" ")
- return  arr.filter(x => x.length > 0)
- 
+  arr1 = arr.map(str => {
+   if(typeof str === "string"){
+     return str.split('').filter(char => char.toLowerCase() !== "x").join('')
+
+   }
+   else{
+      return str
+   }
+  })
+  return arr1.filter(x => x !== "")
  }
  
- console.log(noXInVariables(["xyXyxy", "Xx", "ABC"]))
+ console.log(noXInVariables(["x", 123, "#$%"]))
+
+
+
+  )
+  return result.filter(x => x !== "")
