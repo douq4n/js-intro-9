@@ -9,36 +9,22 @@ countVC("123!@#xyz")             -> {vowels: 0, consonants: 3}
 countVC("")                           -> {vowels: 0, consonants: 0}
 */
 
-function countVC(str) {
-  // Initialize counts
-  let vowelsCount = 0;
-  let consonantsCount = 0;
+const countVC = (str) => {
 
-  // Define vowels
-  const vowels = "aeiouAEIOU";
-
-  // Iterate through each character in the string
-  for (let char of str) {
-      // Check if the character is a letter
-      if ((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) {
-          if (vowels.includes(char)) {
-              // If it's a vowel
-              vowelsCount++;
-          } else {
-              // If it's a consonant
-              consonantsCount++;
-          }
-      }
-  }
-
-  // Return the result as an object
-  return {
-      vowels: vowelsCount,
-      consonants: consonantsCount
-  };
+let count_VC = {
+    'vowels': 0,
+    'consonants': 0
 }
 
-// Test examples
+count_VC['vowels'] = str.split('').filter(char => 'aeiouAEIOU'.includes(char)).length
+count_VC['consonants'] = str.split('').filter(char => ( char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z') && !('aeiouAEIOU'.includes(char)) ).length
+
+return count_VC
+
+
+}
+
+
 console.log(countVC("Hello"));               // {vowels: 2, consonants: 3}
 console.log(countVC("Programming"));         // {vowels: 3, consonants: 8}
 console.log(countVC("123AbC"));              // {vowels: 1, consonants: 2}
@@ -58,42 +44,27 @@ countChars("     ")​                                	-> {}
 countChars("")​                                     	-> {}
 */
 
-function countChars(str) {
-  // Initialize counts
-  let lettersCount = 0;
-  let numbersCount = 0;
-  let specialsCount = 0;
+const countChars = (str) => {
+    str = str.replaceAll(' ', '')
+let count_Chars = {}
 
-  // Define a helper function to categorize each character
-  function categorizeChar(char) {
-      if (char >= 'a' && char <= 'z' || char >= 'A' && char <= 'Z') {
-          lettersCount++;
-      } else if (char >= '0' && char <= '9') {
-          numbersCount++;
-      } else {
-          specialsCount++;
-      }
-  }
 
-  // Convert the string to an array and filter out spaces, then categorize each character
-  Array.from(str).filter(char => char !== ' ').forEach(categorizeChar);
+let letterCount = str.split('').filter(char => char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z').length
+letterCount > 0 ? countChars['letters'] = letterCount : ''
 
-  // Create the result object conditionally
-  let result = {};
-  if (lettersCount > 0) {
-      result.letters = lettersCount;
-  }
-  if (numbersCount > 0) {
-      result.numbers = numbersCount;
-  }
-  if (specialsCount > 0) {
-      result.specials = specialsCount;
-  }
+let numberCount = str.split('').filter(char => '0123456789'.includes(char)).length
+numberCount > 0 ? countChars['numbers'] = numberCount : ''
 
-  return result;
+let specialCount = str.split('').filter(char => !('0123456789'.includes(char)) && !(char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z') ).length
+specialCount > 0 ? count_Chars['specials']  = specialCount : ''
+
+
+return countChars
+
+
 }
 
-// Test examples
+
 console.log(countChars("Hello"));               // {letters: 5}
 console.log(countChars("Programming 123"));     // {letters: 11, numbers: 3}
 console.log(countChars("123AbC!@#"));           // {letters: 3, numbers: 3, specials: 3}
@@ -116,7 +87,7 @@ maxOccurrences("")   		-> ""
 */
 
 function maxOccurrences(str) {
-  // Remove spaces from the string without using regex
+  
   let filteredStr = '';
   for (let char of str) {
       if (char !== ' ') {
@@ -124,15 +95,15 @@ function maxOccurrences(str) {
       }
   }
 
-  // If the string is empty after removing spaces, return an empty string
+ 
   if (filteredStr.length === 0) {
       return '';
   }
 
-  // Initialize a dictionary to keep track of character frequencies
+  
   const charCount = {};
 
-  // Iterate through the filtered string and count character frequencies
+  
   for (let char of filteredStr) {
       if (charCount[char]) {
           charCount[char]++;
@@ -141,7 +112,7 @@ function maxOccurrences(str) {
       }
   }
 
-  // Find the character with the maximum occurrences
+  
   let maxChar = '';
   let maxCount = 0;
   for (let char of filteredStr) {
@@ -240,7 +211,7 @@ romanToInt("MDCLXVI")    -> 1666
 */
 
 function romanToInt(roman) {
-  // Define the value of each Roman numeral symbol
+  
   const values = {
       'I': 1,
       'V': 5,
@@ -251,18 +222,18 @@ function romanToInt(roman) {
       'M': 1000
   };
 
-  // Initialize the total
+  
   let total = 0;
 
-  // Iterate through the string
+  
   for (let i = 0; i < roman.length; i++) {
-      // Get the value of the current symbol
+      
       const current = values[roman[i]];
 
-      // Get the value of the next symbol (if it exists)
+      
       const next = values[roman[i + 1]];
 
-      // If the next symbol is larger, it means we have a subtractive combination
+      
       if (next && current < next) {
           total -= current;
       } else {
@@ -275,7 +246,7 @@ function romanToInt(roman) {
 
 // Test examples
 console.log(romanToInt("I"));                      // 1
-console.log(romanToInt("IV"));                     // 4
+console.log(romanToInt("IV"));                     // 4 
 console.log(romanToInt("CXII"));                   // 112
 console.log(romanToInt("MMM"));                    // 3000
 console.log(romanToInt("MMMDCCCLXXXVIII"));        // 3888
