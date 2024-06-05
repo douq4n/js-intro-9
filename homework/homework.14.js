@@ -122,3 +122,17 @@ capsOdds(["Apple", "Banana", "123", "456", "Peach", "Kiwi"])  -> ["Apple", "BANA
 capsOdds([ ])  -> [ ]
 capsOdds(["John !@#$%", "^&*() Doe"])  -> ["John !@#$%", "^&*() DOE"]
 */
+
+function capsOdds(arr) {
+  // Loop through the array
+  for (let i = 0; i < arr.length; i++) {
+      // Check if the index is odd
+      if (i % 2 !== 0) {
+          // Convert the element at the odd index to uppercase
+          arr[i] = arr[i].toUpperCase();
+      }
+  }
+  
+  // Return the modified array
+  return arr;
+}
