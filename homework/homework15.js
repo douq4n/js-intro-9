@@ -157,3 +157,21 @@ isTrueOrFalse("All FOoD tAsTEs NIcE for someONe")  -> true
 isTrueOrFalse("Got stuck in the Traffic")  -> false
 */
 
+
+const isTrueOrFalse = (str) => {
+  const firstHalf = 'abcdefghijklm';
+
+  return str
+    .toLowerCase()
+    .split(' ')
+    .filter(word => word && /[a-z]/.test(word[0]))  // Filter out non-alphabet words
+    .reduce((acc, word) => acc + (firstHalf.includes(word[0]) ? 1 : -1), 0) >= 0;
+};
+
+// Test cases
+console.log(isTrueOrFalse("A big brown fox caught a bad rabbit"));  // true
+console.log(isTrueOrFalse("Xylophones can obtain Xenon."));         // false
+console.log(isTrueOrFalse("CHOCOLATE MAKES A GREAT SNACK"));        // true
+console.log(isTrueOrFalse("All FOoD tAsTEs NIcE for someONe"));     // true
+console.log(isTrueOrFalse("Got stuck in the Traffic"));             // false
+

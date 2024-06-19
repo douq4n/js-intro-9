@@ -1039,3 +1039,13 @@ const swapFirstLastWord = (sentence) => {
 
 
     console.log(noDigit("123Tech456Global149"))
+
+/*
+
+
+
+
+
+
+
+    
