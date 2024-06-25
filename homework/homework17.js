@@ -105,5 +105,11 @@ const calculateLCM = (num1,num2) => {
 let i = 0;
   for(;;){
 i++
-  }
+if(i % num1  === 0 && i % num2 === 0 ){
+  break
 }
+  }
+  return i
+}
+
+console.log(calculateLCM(48, 18))
